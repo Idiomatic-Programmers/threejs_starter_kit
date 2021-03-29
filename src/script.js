@@ -6,7 +6,9 @@ const webGLCanvas = document.getElementById('webgl')
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 const scene = new THREE.Scene()
+scene.background = new THREE.Color("#f7f7f7")
 
+// The canvas will take up the entire window.
 const sizes = {
     width: window.innerWidth,
     height: window.innerHeight
@@ -31,7 +33,7 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 
 camera.position.z = 5
 scene.add(camera)
 
-const ambientLight = new THREE.AmbientLight("#ffffff", 1)
+const ambientLight = new THREE.AmbientLight("#ffffff", 0.5)
 scene.add(ambientLight)
 
 const renderer = new THREE.WebGLRenderer({
@@ -40,7 +42,6 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setSize(window.innerWidth, window.innerHeight)
-renderer.physicallyCorrectLights = true
 
 const controls = new OrbitControls(camera, renderer.domElement)
 
@@ -48,7 +49,7 @@ const controls = new OrbitControls(camera, renderer.domElement)
  * Test Sphere
  */
 
-const directionalLight = new THREE.DirectionalLight("#ffffff", 2)
+const directionalLight = new THREE.DirectionalLight("#ffffff", 0.5)
 directionalLight.position.set(30.25, 30, 30)
 scene.add(directionalLight)
 
